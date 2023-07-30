@@ -1,0 +1,124 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Sigmar&display=swap'); */
+
+*,
+::after,
+::before {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    height: 100vh;
+    font-family: 'Sigmar', cursive;
+    background: rgb(126, 126, 126);
+    overflow: hidden;
+}
+
+.btn {
+    border: none;
+    background: inherit;
+}
+
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.barleybreak__title {
+    margin: 0;
+    margin-top: 80px;
+    font-weight: 300;
+    font-size: 60px;
+    text-align: center;
+}
+
+
+.slider__wrapper {
+    position: relative;
+    margin: 0 auto;
+    width: 780px;
+    height: 620px;
+    overflow: hidden;
+}
+
+.slider__stage {
+    width: 780px;
+    height: 520px;
+    overflow: hidden;
+}
+
+.slider__stage-line {
+    width: 780px;
+    height: 520px;
+    display: flex;
+    transform: translateX(0);
+    transition: transform .4s ease;
+}
+
+.slider__stage-item {
+    /* width: 500px; */
+    pointer-events: none;
+}
+
+.slider__nav {
+    position: relative;
+    overflow: hidden;
+}
+
+.slider__stage-firstline {
+    transform: translateX(0);
+}
+
+.slider__nav-line {
+    margin-top: 5px;
+    width: 780px;
+    height: 100px;
+    display: flex;
+    transition: transform .4s ease;
+}
+
+.slider__nav-item {
+    width: 120px;
+    height: 80px;
+}
+
+.slider__nav-border {
+    position: absolute;
+    top: 5px;
+    left: 0;
+    width: 120px;
+    height: 80px;
+    border: 3px solid #0bb5b5cb;
+    background-color: rgba(116, 222, 222, 0.2);
+    transition: left .4s ease;
+}
+
+.slider__next,
+.slider__prew {
+    position: absolute;
+    top: 43%;
+    z-index: 100;
+    font-size: 30px;
+    color: #fff;
+    cursor: pointer;
+    transition: all .3s ease;
+}
+
+.slider__prew {
+    left: 4%;
+    transform: translateY(-50%) translateX(-50px) rotate(-90deg);
+}
+
+.slider__next {
+    right: 4%;
+    transform: translateY(-50%) translateX(50px) rotate(90deg);
+}
+
+.slider__wrapper:hover .slider__prew {
+    transform: translateY(-50%) rotate(-90deg);
+}
+
+.slider__wrapper:hover .slider__next {
+    transform: translateY(-50%) rotate(90deg);
+}
