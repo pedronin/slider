@@ -12,6 +12,9 @@ for (let i = 0; i < items.length; i++) {
   img.classList.add('slider__nav-item');
   nav.appendChild(img);
 }
+console.log(items);
+const navWidth = nav.offsetWidth;
+const navItemWidth = navWidth / 6.5;
 
 arrNext.addEventListener('click', nextSlide);
 arrPrev.addEventListener('click', prevSlide);
@@ -21,26 +24,26 @@ let offsetBorder = 0;
 let offsetNav = 0;
 
 function nextSlide() {
-  offsetStage -= nav.offsetWidth;
-  if (offsetStage < -nav.offsetWidth * (items.length - 1)) {
+  offsetStage -= navWidth;
+  if (offsetStage < -navWidth * (items.length - 1)) {
     offsetStage = 0;
   }
   stage.style.transform = `translateX(${offsetStage}px)`;
 
   if (
-    offsetBorder >= 3 * 120 &&
-    items.length * 120 > nav.offsetWidth &&
-    items.length * 120 + offsetNav > nav.offsetWidth
+    offsetBorder >= 3 * navItemWidth &&
+    items.length * navItemWidth > navWidth &&
+    items.length * navItemWidth + offsetNav > navWidth
   ) {
-    offsetNav -= 120;
+    offsetNav -= navItemWidth;
     nav.style.transform = `translateX(${offsetNav}px)`;
   } else {
-    offsetBorder += 120;
+    offsetBorder += navItemWidth;
   }
 
-  if (items.length * 120 + offsetNav - nav.offsetWidth === 60) {
-    offsetNav -= 60;
-    offsetBorder -= 60;
+  if (items.length * navItemWidth + offsetNav - navWidth === (navItemWidth/2)) {
+    offsetNav -= (navItemWidth/2);
+    offsetBorder -= (navItemWidth/2);
     nav.style.transform = `translateX(${offsetNav}px)`;
   }
 
@@ -53,35 +56,35 @@ function nextSlide() {
 }
 
 function prevSlide() {
-  offsetStage += nav.offsetWidth;
+  offsetStage += navWidth;
   if (offsetStage > 0) {
-    offsetStage = -nav.offsetWidth * (items.length - 1);
+    offsetStage = -navWidth * (items.length - 1);
   }
   stage.style.transform = `translateX(${offsetStage}px)`;
 
   // сдвиг nav в зависимости от положения border
   // и сдвиг самого бордера
   if (
-    offsetBorder <= 3.5 * 120 &&
-    items.length * 120 > nav.offsetWidth &&
+    offsetBorder <= 3.5 * navItemWidth &&
+    items.length * navItemWidth > navWidth &&
     offsetNav != 0 &&
-    items.length * 120 - offsetNav + 60 !== items.length * 120
+    items.length * navItemWidth - offsetNav + (navItemWidth/2) !== items.length * navItemWidth
   ) {
-    offsetNav += 120;
+    offsetNav += navItemWidth;
     nav.style.transform = `translateX(${offsetNav}px)`;
   } else {
-    offsetBorder -= 120;
+    offsetBorder -= navItemWidth;
   }
 
-  if (offsetNav === 60) {
-    offsetNav -= 60;
-    offsetBorder -= 60;
+  if (offsetNav === (navItemWidth/2)) {
+    offsetNav -= (navItemWidth/2);
+    offsetBorder -= (navItemWidth/2);
     nav.style.transform = `translateX(${offsetNav}px)`;
   }
 
-  if (offsetStage === -nav.offsetWidth * (items.length - 1)) {
-    offsetBorder = nav.offsetWidth - 120;
-    offsetNav = nav.offsetWidth - items.length * 120;
+  if (offsetStage === -navWidth * (items.length - 1)) {
+    offsetBorder = navWidth - navItemWidth;
+    offsetNav = navWidth - items.length * navItemWidth;
     nav.style.transform = `translateX(${offsetNav}px)`;
   }
   navCurrent.style.left = `${offsetBorder}px`;

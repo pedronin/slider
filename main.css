@@ -74,9 +74,9 @@ img {
 }
 
 .slider__nav-line {
-  margin-top: 5px;
+  margin-top: 2px;
   max-width: 780px;
-  height: 100px;
+  /* height: 100px; */
   display: flex;
   transition: transform 0.4s ease;
 }
@@ -86,15 +86,23 @@ img {
   height: 80px;
 }
 
+
 .slider__nav-border {
   position: absolute;
-  top: 5px;
+  top: 2px;
   left: 0;
   width: 120px;
   height: 80px;
   border: 3px solid #0bb5b5cb;
   background-color: rgba(116, 222, 222, 0.2);
   transition: left 0.4s ease;
+}
+
+@media (max-width: 780px) {
+  .slider__nav-item, .slider__nav-border {
+    height: 100%;
+    width: 15.38vw;
+  }
 }
 
 .slider__next,
