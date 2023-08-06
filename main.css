@@ -10,7 +10,8 @@ body {
   margin: 0;
   height: 100vh;
   font-family: 'Sigmar', cursive;
-  background: rgb(0, 0, 0);
+  background: #000000;
+  background-color: #2e445c;
   overflow: hidden;
 }
 
